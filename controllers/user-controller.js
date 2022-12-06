@@ -128,6 +128,9 @@ const userController = {
       .then(([userProfile, userComments]) => {
         if (!userProfile) throw new Error("User didn't exist!")
         if (!userComments) throw new Error("User didn't make any comment!")
+        /* if (req.user.id === Number(req.params.id)) {
+          return res.render('users/profile', { user: userProfile, userComments })
+        } */
         return res.render('users/profile', { user: getUser(req), userProfile, userComments })
       })
       .catch(err => next(err))
