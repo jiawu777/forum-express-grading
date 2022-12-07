@@ -38,8 +38,12 @@ router.delete('/favorite/:restaurantId', authenticated, userController.removeFav
 router.post('/like/:restaurantId', authenticated, userController.addLike)
 router.delete('/like/:restaurantId', authenticated, userController.removeLike)
 
+// 追蹤
+router.post('/following/:userId', authenticated, userController.addFollowing)
+router.delete('/following/:userId', authenticated, userController.removeFollowing)
+
 // 個人頁面
-router.get('/users/top', authenticated, userController.getTopUsers)//要放在:id之前，不然top會被視為:id
+router.get('/users/top', authenticated, userController.getTopUsers)// 要放在:id之前，不然top會被視為:id
 router.get('/users/:id', authenticated, userController.getUser)
 router.get('/users/:id/edit', authenticated, userController.editUser)
 router.put('/users/:id', upload.single('image'), userController.putUser)
